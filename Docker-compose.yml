@@ -1,12 +1,10 @@
 version: "3.9"
 
 services:
-  app:
+  gdpr_app:
     build: .
     container_name: gdpr_app
     volumes:
       - ./data:/app  # Persistens för SQLite-databasen
-    ports:
-      - "5000:5000"  # Om du vill köra en webbtjänst, annars kan tas bort
     environment:
       - DATABASE_PATH=/app/users.db
