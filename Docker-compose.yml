@@ -5,6 +5,7 @@ services:
     build: .
     container_name: gdpr_app
     volumes:
-      - ./data:/app  # Persistens för SQLite-databasen
+      - ./data:/data  # Persistens för SQLite-databasen
     environment:
-      - DATABASE_PATH=/app/users.db
+      - DATABASE_PATH=/data/users.db
+
