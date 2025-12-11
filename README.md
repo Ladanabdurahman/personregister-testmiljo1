@@ -1,15 +1,15 @@
-# Python SQLite Testdata Manager 
+# Python SQLite GDPR Personregister
 
 ## Beskrivning
-Detta projekt är ett enkelt Python-program som hanterar testdata i en SQLite-databas.  
+Detta projekt är ett enkelt Python-program som simulerar ett personregister med GDPR-funktioner, lagrat i en SQLite-databas.  
 Programmet kan:
 
 - Skapa databasen `users.db` om den inte finns
 - Skapa tabellen `users` med fälten `id`, `name` och `email`
 - Lägga in två testpersoner: Peter Petterson och Malin Ericsson
 - Visa alla användare i databasen
-- Rensa alla användare
-- Anonymisera alla användare
+- Rensa alla användare (ta bort testdata)
+- Anonymisera alla användare (GDPR-anonymisering)
 
 Programmet körs via en terminalbaserad meny inuti en Docker-container.
 
@@ -21,27 +21,37 @@ För att köra projektet behövs:
 - Grundläggande kunskap om terminalkommandon
 
 ## Filstruktur
-app.py 
-Dockerfile 
-docker-compose.yml 
-.gitignore 
-README.md 
+app.py
+Dockerfile
+docker-compose.yml
+.gitignore
+README.md
+data/ # Här lagras SQLite-databasen users.db
+
+## GDPR-åtgärd i projektet
+
+| Funktion               | GDPR-Artikel| Beskrivning |
+|------------------------|-------------|-------------|
+| anonymize_users()      | Art. 4(5)   | Ersätter namn och e-post med generiska värden så att personer inte längre kan identifieras                              |
+
+**Effekt:** Efter anonymisering går det inte längre att koppla en post till en faktisk individ, vilket uppfyller GDPR:s definition av anonymiserad data.
 
 ## Bygga och köra med Docker
 
 1. Öppna terminalen och navigera till projektmappen.
 
 2. Bygg och starta containern med:
+```bash
 docker compose up --build
 
-3. När containern startar visas menyn:
+# När containern startar visas menyn
 --- MENY ---
-Visa användare
-Rensa användare
-Anonymisera användare
-Avsluta
+1. Visa användare
+2. Rensa användare (radera testdata)
+3. Anonymisera användare (GDPR-anonymisering)
+4. Avsluta
 
-Skriv en siffra (1–4) och tryck Enter för att välja alternativ.
+#Skriv en siffra (1–4) och tryck Enter för att välja alternativ
 
-4. För att stoppa containern, tryck `Ctrl + C` i terminalen och kör sedan:
+#För att stoppa containern, tryck Ctrl + C i terminalen och kör sedan
 docker compose down
