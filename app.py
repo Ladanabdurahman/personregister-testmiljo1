@@ -1,5 +1,5 @@
-import sqlite3  # SQLite-bibliotek
-import os  # Miljövariabler
+import sqlite3  
+import os  
 
 DB_NAME = os.getenv("DATABASE_PATH", "users.db")  # Databasfil
 
@@ -88,4 +88,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
