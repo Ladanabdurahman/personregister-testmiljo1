@@ -1,0 +1,17 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# SQLite database
+users.db
+data/
+
+# Virtual environments
+venv/
+.venv/
+
+# VS Code settings
+.vscode/
+
+# Docker artifacts
+*.log
