@@ -1,17 +1,21 @@
-# Python cache
+# Python cache-filer
 __pycache__/
 *.pyc
 
-# SQLite database
-users.db
-data/
+# SQLite databasfiler
+*.db
+*.sqlite
+data/users.db
 
-# Virtual environments
-venv/
-.venv/
-
-# VS Code settings
-.vscode/
-
-# Docker artifacts
+# Docker temporära filer
 *.log
+*.pid
+*.sock
+docker-compose.override.yml
+
+# IDE-filer
+.vscode/
+.idea/
+
+# Windows temporära filer
+Thumbs.db
