@@ -63,6 +63,7 @@ def anonymize_users():
     print("\nAlla användare har anonymiserats (GDPR).")
 
 if __name__ == "__main__":
+
     # Kör automatiskt vid start
     setup_database()
     show_users()
@@ -73,3 +74,4 @@ if __name__ == "__main__":
             time.sleep(1)  # Håller processen igång
     except KeyboardInterrupt:
         print("\nStänger ner...")
+

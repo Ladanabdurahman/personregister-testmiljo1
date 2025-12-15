@@ -3,7 +3,6 @@
 ## Beskrivning
 Detta projekt är ett Python-program som simulerar ett personregister med **GDPR-fokus på Dataanonymisering**.  
 Programmet använder en SQLite-databas (`users.db`) och kan:
-
 - Skapa databasen om den inte finns
 - Skapa tabellen `users` med fälten `id`, `name` och `email`
 - Lägga in två testpersoner: **Peter Petterson** och **Malin Ericsson**
@@ -18,8 +17,6 @@ Programmet körs automatiskt i en Docker-container och initierar databasen vid s
 |------------------|--------------|-------------|
 | `anonymize_users()` | Art. 4(5)   | Ersätter namn och e-post med generiska värden så att personer inte längre kan identifieras |
 | `clear_users()`     | Art. 4(5)   | Raderar all testdata för att säkerställa dataskydd |
-
----
 
 ## Körning och testning
 
