@@ -1,7 +1,9 @@
-import sqlite3  # SQLite-bibliotek
-import os  # Miljövariabler
+import sqlite3
+import os
+import time
 
-DB_NAME = os.getenv("DATABASE_PATH", "users.db")  # Databasfil
+# Databasfil (hämtas från miljövariabel eller standard "users.db")
+DB_NAME = os.getenv("DATABASE_PATH", "users.db")
 
 def setup_database():
     conn = sqlite3.connect(DB_NAME)
@@ -21,6 +23,9 @@ def setup_database():
     if cur.fetchone()[0] == 0:
         cur.execute("INSERT INTO users (name, email) VALUES (?, ?)", ("Peter Petterson", "peter@test.com"))
         cur.execute("INSERT INTO users (name, email) VALUES (?, ?)", ("Malin Ericsson", "malin@test.com"))
+        print("Databasen initierades med testanvändare.")
+    else:
+        print("Databasen innehåller redan användare.")
 
     conn.commit()
     conn.close()
@@ -44,48 +49,27 @@ def show_users():
 def clear_users():
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
-
     cur.execute("DELETE FROM users")
     conn.commit()
-    print("\nAlla användare har raderats.")
-
     conn.close()
+    print("\nAlla användare har raderats (GDPR).")
 
 def anonymize_users():
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
-
-    # Anonymisera användare
     cur.execute("UPDATE users SET name = 'Anonym', email = 'anonym@none'")
     conn.commit()
-    print("\nAlla användare har anonymiserats.")
-
     conn.close()
-
-def main():
-    setup_database()  # Initiera databas
-
-    while True:
-        print("\n--- MENY ---")
-        print("1. Visa användare")
-        print("2. Rensa användare (radera testdata)")
-        print("3. Anonymisera användare (GDPR-anonymisering)")
-        print("4. Avsluta")
-
-        choice = input("Välj ett alternativ: ")
-
-        if choice == "1":
-            show_users()
-        elif choice == "2":
-            clear_users()
-        elif choice == "3":
-            anonymize_users()
-        elif choice == "4":
-            print("Avslutar.")
-            break
-        else:
-            print("Fel val. Försök igen.")
+    print("\nAlla användare har anonymiserats (GDPR).")
 
 if __name__ == "__main__":
-    main()
+    # Kör automatiskt vid start
+    setup_database()
+    show_users()
 
+    print("\nContainern körs. Tryck Ctrl+C för att avsluta.")
+    try:
+        while True:
+            time.sleep(1)  # Håller processen igång
+    except KeyboardInterrupt:
+        print("\nStänger ner...")
