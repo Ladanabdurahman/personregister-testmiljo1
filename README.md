@@ -8,7 +8,7 @@ Programmet använder en SQLite-databas (`users.db`) och kan:
 - Lägga in två testpersoner: **Peter Petterson** och **Malin Ericsson**
 - Visa alla användare i databasen
 - Anonymisera alla användare enligt **Art. 4(5) – Dataanonymisering**
-- Rensa all testdata (GDPR-åtgärd)
+- Rensa all testdata (GDPR-åtgärd)...
 
 Programmet körs automatiskt i en Docker-container och initierar databasen vid start.
 
