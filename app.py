@@ -1,6 +1,5 @@
 import sqlite3
 import os
-import time
 
 # Databasfil (hämtas från miljövariabel eller standard "users.db")
 DB_NAME = os.getenv("DATABASE_PATH", "users.db")
@@ -62,17 +61,6 @@ def anonymize_users():
     conn.close()
     print("\nAlla användare har anonymiserats (GDPR).")
 
-if __name__ == "__main__":
-    # Kör hela GDPR-sekvensen automatiskt
-    run_all()
-
-    print("\nContainern körs. Tryck Ctrl+C för att avsluta.")
-    try:
-        while True:
-            time.sleep(1)  # Håller processen igång
-    except KeyboardInterrupt:
-        print("\nStänger ner...")
-
 def run_all():
     print("\n--- Kör GDPR-sekvens ---")
 
@@ -89,3 +77,10 @@ def run_all():
     show_users()
 
     print("\n--- GDPR-sekvens klar ---")
+
+if __name__ == "__main__":
+    # Kör hela GDPR-sekvensen automatiskt när du trycker på play
+    run_all()
+
+    print("\nProgrammet kördes klart.")
+
