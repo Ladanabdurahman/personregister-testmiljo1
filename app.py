@@ -63,10 +63,8 @@ def anonymize_users():
     print("\nAlla användare har anonymiserats (GDPR).")
 
 if __name__ == "__main__":
-
-    # Kör automatiskt vid start
-    setup_database()
-    show_users()
+    # Kör hela GDPR-sekvensen automatiskt
+    run_all()
 
     print("\nContainern körs. Tryck Ctrl+C för att avsluta.")
     try:
