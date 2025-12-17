@@ -75,3 +75,19 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nStänger ner...")
 
+def run_all():
+    print("\n--- Kör GDPR-sekvens ---")
+
+    # 1. Rensa testdata
+    clear_users()
+    show_users()
+
+    # 2. Återställ testdata
+    setup_database()
+    show_users()
+
+    # 3. Anonymisera testdata
+    anonymize_users()
+    show_users()
+
+    print("\n--- GDPR-sekvens klar ---")
